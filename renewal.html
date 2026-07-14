@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Renewal</title>
+
+<link rel="stylesheet" href="renewal.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<h1>🏢 OM DIGITAL E-SEVA KENDRA</h1>
+
+<h2>RENEWAL</h2>
+
+<form id="renewForm">
+
+<div class="row">
+
+<div class="inputBox">
+
+<label>Full Name</label>
+
+<input
+type="text"
+id="name"
+placeholder="Enter Full Name"
+required>
+
+</div>
+
+<div class="inputBox">
+
+<label>MH Number</label>
+
+<input
+type="text"
+id="mhNumber"
+maxlength="14"
+placeholder="MH123456789012"
+oninput="formatMH(this)"
+required>
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="inputBox">
+
+<label>Mobile Number</label>
+
+<input
+type="text"
+id="mobile"
+maxlength="10"
+placeholder="Enter Mobile Number"
+required>
+
+</div>
+
+<div class="inputBox">
+
+<label>Renewal Date</label>
+
+<input
+type="date"
+id="renewDate"
+readonly>
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="inputBox">
+
+<label>Verification Date</label>
+
+<input
+type="date"
+id="verifyDate"
+required>
+
+</div>
+
+<div class="inputBox">
+
+<label>From</label>
+
+<select id="from">
+
+<option>Office</option>
+<option>Camp</option>
+<option>Online</option>
+
+</select>
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="inputBox">
+
+<label>Form Filler</label>
+
+<select id="filler">
+
+<option>Admin</option>
+<option>Operator 1</option>
+<option>Operator 2</option>
+<option>Operator 3</option>
+
+</select>
+
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button
+type="button"
+id="saveBtn">
+
+💾 SAVE
+
+</button>
+
+<button
+type="button"
+onclick="window.location='dashboard.html'">
+
+⬅ BACK
+
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+<script src="renewal.js"></script>
+
+</body>
+
+</html>
