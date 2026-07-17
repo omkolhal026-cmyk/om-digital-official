@@ -111,3 +111,10 @@ async function saveRenewal(){
     btn.innerHTML = "💾 SAVE";
 
 }
+const verifyTaluka =
+document.getElementById("verifyTaluka").value;
+
+if(verifyTaluka==""){
+    alert("Select Verification Taluka");
+    return;
+}
