@@ -88,3 +88,10 @@ async function saveRegistration() {
     btn.disabled = false;
     btn.innerHTML = "💾 SAVE";
 }
+const verifyTaluka =
+document.getElementById("verifyTaluka").value;
+
+if(verifyTaluka==""){
+    alert("Select Verification Taluka");
+    return;
+}
