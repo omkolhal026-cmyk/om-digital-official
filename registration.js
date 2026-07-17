@@ -44,7 +44,7 @@ async function saveRegistration() {
     btn.innerHTML = "Saving...";
 
     const formData = new FormData();
-
+    formData.append("verifyTaluka",verifyTaluka);
     formData.append("type", "Registration");
     formData.append("name", name);
     formData.append("aadhaar", aadhaar);
