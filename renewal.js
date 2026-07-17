@@ -75,7 +75,7 @@ async function saveRenewal(){
     formData.append("verifyDate",verifyDate);
     formData.append("from",from);
     formData.append("formFiller",formFiller);
-
+    formData.append("verifyTaluka",verifyTaluka);
     try{
 
         const response = await fetch(SCRIPT_URL,{
