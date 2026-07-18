@@ -1,14 +1,14 @@
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxcYjY5sMXMPT8g1hEFMdT62YXrUPeSypUksN9t4lngDMBbGQxil_4Nb3azkiz804QN/exec";
 
 // Auto Today's Date
-window.onload = () => {
+window.onload = function () {
 
     document.getElementById("renewDate").value =
         new Date().toISOString().split("T")[0];
 
 };
 
-// MH Format
+// MH Number Format
 function formatMH(input){
 
     let value = input.value.toUpperCase();
@@ -37,6 +37,7 @@ async function saveRenewal(){
     const mobile = document.getElementById("mobile").value.trim();
     const renewDate = document.getElementById("renewDate").value;
     const verifyDate = document.getElementById("verifyDate").value;
+    const verifyTaluka = document.getElementById("verifyTaluka").value;
     const from = document.getElementById("from").value;
     const formFiller = document.getElementById("filler").value;
 
@@ -62,6 +63,11 @@ async function saveRenewal(){
         return;
     }
 
+    if(verifyTaluka===""){
+        alert("Select Verification Taluka");
+        return;
+    }
+
     btn.disabled = true;
     btn.innerHTML = "Saving...";
 
@@ -73,9 +79,10 @@ async function saveRenewal(){
     formData.append("mobile",mobile);
     formData.append("renewDate",renewDate);
     formData.append("verifyDate",verifyDate);
+    formData.append("verifyTaluka",verifyTaluka);
     formData.append("from",from);
     formData.append("formFiller",formFiller);
-    formData.append("verifyTaluka",verifyTaluka);
+
     try{
 
         const response = await fetch(SCRIPT_URL,{
@@ -92,11 +99,11 @@ async function saveRenewal(){
             document.getElementById("renewForm").reset();
 
             document.getElementById("renewDate").value =
-            new Date().toISOString().split("T")[0];
+                new Date().toISOString().split("T")[0];
 
         }else{
 
-            alert(result.message);
+            alert(result.message || "Save Failed");
 
         }
 
@@ -110,11 +117,4 @@ async function saveRenewal(){
     btn.disabled = false;
     btn.innerHTML = "💾 SAVE";
 
-}
-const verifyTaluka =
-document.getElementById("verifyTaluka").value;
-
-if(verifyTaluka==""){
-    alert("Select Verification Taluka");
-    return;
 }
