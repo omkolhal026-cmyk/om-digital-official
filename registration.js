@@ -1,11 +1,12 @@
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxcYjY5sMXMPT8g1hEFMdT62YXrUPeSypUksN9t4lngDMBbGQxil_4Nb3azkiz804QN/exec";
 
 // Auto Today's Date
-window.onload = () => {
+window.onload = function () {
     document.getElementById("regDate").value =
         new Date().toISOString().split("T")[0];
 };
 
+// Save Button
 document.getElementById("saveBtn").addEventListener("click", saveRegistration);
 
 async function saveRegistration() {
@@ -17,8 +18,11 @@ async function saveRegistration() {
     const mobile = document.getElementById("mobile").value.trim();
     const regDate = document.getElementById("regDate").value;
     const verifyDate = document.getElementById("verifyDate").value;
+    const verifyTaluka = document.getElementById("verifyTaluka").value;
     const from = document.getElementById("from").value;
     const formFiller = document.getElementById("filler").value;
+
+    // Validation
 
     if (name === "") {
         alert("Enter Full Name");
@@ -40,17 +44,23 @@ async function saveRegistration() {
         return;
     }
 
+    if (verifyTaluka === "") {
+        alert("Select Verification Taluka");
+        return;
+    }
+
     btn.disabled = true;
     btn.innerHTML = "Saving...";
 
     const formData = new FormData();
-    formData.append("verifyTaluka",verifyTaluka);
+
     formData.append("type", "Registration");
     formData.append("name", name);
     formData.append("aadhaar", aadhaar);
     formData.append("mobile", mobile);
     formData.append("regDate", regDate);
     formData.append("verifyDate", verifyDate);
+    formData.append("verifyTaluka", verifyTaluka);
     formData.append("from", from);
     formData.append("formFiller", formFiller);
 
@@ -87,11 +97,5 @@ async function saveRegistration() {
 
     btn.disabled = false;
     btn.innerHTML = "💾 SAVE";
-}
-const verifyTaluka =
-document.getElementById("verifyTaluka").value;
 
-if(verifyTaluka==""){
-    alert("Select Verification Taluka");
-    return;
 }
